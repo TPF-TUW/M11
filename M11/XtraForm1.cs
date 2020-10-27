@@ -191,18 +191,29 @@ namespace M11
                         strCREATE = txeCREATE.Text.Trim();
                     }
 
+                    if (lblStatus.Text == "* Add Style")
+                    {
+                        sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
+                        sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                    }
+                    else if (lblStatus.Text == "* Edit Style")
+                    {
+                        sbSQL.Append("  UPDATE ProductStyle SET ");
+                        sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
+                        sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
+                    }
 
-                    sbSQL.Append("IF NOT EXISTS(SELECT OIDSTYLE FROM ProductStyle WHERE OIDSTYLE = '" + txeID.Text.Trim() + "') ");
-                    sbSQL.Append(" BEGIN ");
-                    sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
-                    sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
-                    sbSQL.Append(" END ");
-                    sbSQL.Append("ELSE ");
-                    sbSQL.Append(" BEGIN ");
-                    sbSQL.Append("  UPDATE ProductStyle SET ");
-                    sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
-                    sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
-                    sbSQL.Append(" END ");
+                    //sbSQL.Append("IF NOT EXISTS(SELECT OIDSTYLE FROM ProductStyle WHERE OIDSTYLE = '" + txeID.Text.Trim() + "') ");
+                    //sbSQL.Append(" BEGIN ");
+                    //sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
+                    //sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                    //sbSQL.Append(" END ");
+                    //sbSQL.Append("ELSE ");
+                    //sbSQL.Append(" BEGIN ");
+                    //sbSQL.Append("  UPDATE ProductStyle SET ");
+                    //sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
+                    //sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
+                    //sbSQL.Append(" END ");
                     //MessageBox.Show(sbSQL.ToString());
                     if (sbSQL.Length > 0)
                     {
