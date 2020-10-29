@@ -403,6 +403,8 @@
             this.gvStyle.Name = "gvStyle";
             this.gvStyle.OptionsBehavior.Editable = false;
             this.gvStyle.OptionsBehavior.ReadOnly = true;
+            this.gvStyle.OptionsView.EnableAppearanceEvenRow = true;
+            this.gvStyle.OptionsView.EnableAppearanceOddRow = true;
             this.gvStyle.OptionsView.ShowGroupPanel = false;
             this.gvStyle.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvGarment_RowCellClick);
             this.gvStyle.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvStyle_RowStyle);

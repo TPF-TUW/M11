@@ -145,26 +145,7 @@ namespace M11
 
         private void gvStyle_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if (sender is GridView)
-            {
-                GridView gView = (GridView)sender;
-                if (!gView.IsValidRowHandle(e.RowHandle)) return;
-                int parent = gView.GetParentRowHandle(e.RowHandle);
-                if (gView.IsGroupRow(parent))
-                {
-                    for (int i = 0; i < gView.GetChildRowCount(parent); i++)
-                    {
-                        if (gView.GetChildRowHandle(parent, i) == e.RowHandle)
-                        {
-                            e.Appearance.BackColor = i % 2 == 0 ? Color.AliceBlue : Color.White;
-                        }
-                    }
-                }
-                else
-                {
-                    e.Appearance.BackColor = e.RowHandle % 2 == 0 ? Color.AliceBlue : Color.White;
-                }
-            }
+            
         }
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
