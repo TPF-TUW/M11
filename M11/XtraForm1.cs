@@ -76,15 +76,7 @@ namespace M11
 
         private void gvGarment_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            lblStatus.Text = "* Edit Style";
-            lblStatus.ForeColor = Color.Red;
-
-            txeID.Text = gvStyle.GetFocusedRowCellValue("No").ToString();
-            txeStyleNo.Text = gvStyle.GetFocusedRowCellValue("StyleName").ToString();
-            glueCategory.EditValue = gvStyle.GetFocusedRowCellValue("CategoryID").ToString();
-
-            txeCREATE.Text = gvStyle.GetFocusedRowCellValue("CreatedBy").ToString();
-            txeDATE.Text = gvStyle.GetFocusedRowCellValue("CreatedDate").ToString();
+            
         }
 
         private bool chkDuplicateName()
@@ -222,6 +214,17 @@ namespace M11
             System.Diagnostics.Process.Start(pathFile);
         }
 
+        private void gvStyle_RowClick(object sender, RowClickEventArgs e)
+        {
+            lblStatus.Text = "* Edit Style";
+            lblStatus.ForeColor = Color.Red;
 
+            txeID.Text = gvStyle.GetFocusedRowCellValue("No").ToString();
+            txeStyleNo.Text = gvStyle.GetFocusedRowCellValue("StyleName").ToString();
+            glueCategory.EditValue = gvStyle.GetFocusedRowCellValue("CategoryID").ToString();
+
+            txeCREATE.Text = gvStyle.GetFocusedRowCellValue("CreatedBy").ToString();
+            txeDATE.Text = gvStyle.GetFocusedRowCellValue("CreatedDate").ToString();
+        }
     }
 }
