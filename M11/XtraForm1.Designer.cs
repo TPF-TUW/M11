@@ -137,6 +137,7 @@
             this.bbiPrintPreview.Id = 14;
             this.bbiPrintPreview.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiPrintPreview.Name = "bbiPrintPreview";
+            this.bbiPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
             // 
             // bsiRecordsCount
             // 
@@ -183,6 +184,7 @@
             this.bbiPrint.Id = 20;
             this.bbiPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPrint.ImageOptions.SvgImage")));
             this.bbiPrint.Name = "bbiPrint";
+            this.bbiPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrint_ItemClick);
             // 
             // bbiSave
             // 
@@ -313,14 +315,14 @@
             // 
             // glueCategory
             // 
-            this.glueCategory.Location = new System.Drawing.Point(103, 52);
+            this.glueCategory.Location = new System.Drawing.Point(112, 52);
             this.glueCategory.MenuManager = this.ribbonControl;
             this.glueCategory.Name = "glueCategory";
             this.glueCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.glueCategory.Properties.NullText = "";
             this.glueCategory.Properties.PopupView = this.gridLookUpEdit1View;
-            this.glueCategory.Size = new System.Drawing.Size(188, 20);
+            this.glueCategory.Size = new System.Drawing.Size(179, 20);
             this.glueCategory.StyleController = this.layoutControl1;
             this.glueCategory.TabIndex = 14;
             // 
@@ -334,11 +336,11 @@
             // txeStyleNo
             // 
             this.txeStyleNo.EditValue = "";
-            this.txeStyleNo.Location = new System.Drawing.Point(103, 28);
+            this.txeStyleNo.Location = new System.Drawing.Point(112, 28);
             this.txeStyleNo.MenuManager = this.ribbonControl;
             this.txeStyleNo.Name = "txeStyleNo";
             this.txeStyleNo.Properties.MaxLength = 200;
-            this.txeStyleNo.Size = new System.Drawing.Size(188, 20);
+            this.txeStyleNo.Size = new System.Drawing.Size(179, 20);
             this.txeStyleNo.StyleController = this.layoutControl1;
             this.txeStyleNo.TabIndex = 12;
             this.txeStyleNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeStyleNo_KeyDown);
@@ -357,31 +359,31 @@
             // 
             // txeDATE
             // 
-            this.txeDATE.Location = new System.Drawing.Point(103, 378);
+            this.txeDATE.Location = new System.Drawing.Point(112, 378);
             this.txeDATE.MenuManager = this.ribbonControl;
             this.txeDATE.Name = "txeDATE";
             this.txeDATE.Properties.ReadOnly = true;
-            this.txeDATE.Size = new System.Drawing.Size(188, 20);
+            this.txeDATE.Size = new System.Drawing.Size(179, 20);
             this.txeDATE.StyleController = this.layoutControl1;
             this.txeDATE.TabIndex = 9;
             // 
             // txeCREATE
             // 
-            this.txeCREATE.Location = new System.Drawing.Point(103, 354);
+            this.txeCREATE.Location = new System.Drawing.Point(112, 354);
             this.txeCREATE.MenuManager = this.ribbonControl;
             this.txeCREATE.Name = "txeCREATE";
             this.txeCREATE.Properties.ReadOnly = true;
-            this.txeCREATE.Size = new System.Drawing.Size(188, 20);
+            this.txeCREATE.Size = new System.Drawing.Size(179, 20);
             this.txeCREATE.StyleController = this.layoutControl1;
             this.txeCREATE.TabIndex = 8;
             // 
             // txeID
             // 
-            this.txeID.Location = new System.Drawing.Point(103, 4);
+            this.txeID.Location = new System.Drawing.Point(112, 4);
             this.txeID.MenuManager = this.ribbonControl;
             this.txeID.Name = "txeID";
             this.txeID.Properties.ReadOnly = true;
-            this.txeID.Size = new System.Drawing.Size(111, 20);
+            this.txeID.Size = new System.Drawing.Size(102, 20);
             this.txeID.StyleController = this.layoutControl1;
             this.txeID.TabIndex = 5;
             // 

@@ -226,5 +226,15 @@ namespace M11
             txeCREATE.Text = gvStyle.GetFocusedRowCellValue("CreatedBy").ToString();
             txeDATE.Text = gvStyle.GetFocusedRowCellValue("CreatedDate").ToString();
         }
+
+        private void bbiPrintPreview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gcStyle.ShowPrintPreview();
+        }
+
+        private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gcStyle.Print();
+        }
     }
 }
