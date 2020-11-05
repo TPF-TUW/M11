@@ -344,6 +344,7 @@
             this.txeStyleNo.StyleController = this.layoutControl1;
             this.txeStyleNo.TabIndex = 12;
             this.txeStyleNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txeStyleNo_KeyDown);
+            this.txeStyleNo.Leave += new System.EventHandler(this.txeStyleNo_Leave);
             this.txeStyleNo.LostFocus += new System.EventHandler(this.txeStyleNo_LostFocus);
             // 
             // lblStatus

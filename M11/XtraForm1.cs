@@ -91,9 +91,6 @@ namespace M11
                     sbSQL.Append("SELECT TOP(1) StyleName FROM ProductStyle WHERE (StyleName = N'" + txeStyleNo.Text.Trim() + "') ");
                     if (new DBQuery(sbSQL).getString() != "")
                     {
-                        FUNC.msgWarning("Duplicate style name. !! Please Change.");
-                        txeStyleNo.Text = "";
-                        txeStyleNo.Focus();
                         chkDup = false;
                     }
                 }
@@ -107,9 +104,6 @@ namespace M11
 
                     if (strCHK != "" && strCHK != txeID.Text.Trim())
                     {
-                        FUNC.msgWarning("Duplicate style name. !! Please Change.");
-                        txeStyleNo.Text = "";
-                        txeStyleNo.Focus();
                         chkDup = false;
                     }
                 }
@@ -127,12 +121,7 @@ namespace M11
 
         private void txeStyleNo_LostFocus(object sender, EventArgs e)
         {
-            txeStyleNo.Text = txeStyleNo.Text.ToUpper().Trim();
-            bool chkDup = chkDuplicateName();
-            if (chkDup == false)
-            {
-                glueCategory.Focus();
-            }
+            
         }
 
         private void gvStyle_RowStyle(object sender, RowStyleEventArgs e)
@@ -235,6 +224,21 @@ namespace M11
         private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             gcStyle.Print();
+        }
+
+        private void txeStyleNo_Leave(object sender, EventArgs e)
+        {
+            if (txeStyleNo.Text.Trim() != "")
+            {
+                txeStyleNo.Text = txeStyleNo.Text.ToUpper().Trim();
+                bool chkDup = chkDuplicateName();
+                if (chkDup == false)
+                {
+                    txeStyleNo.Text = "";
+                    txeStyleNo.Focus();
+                    FUNC.msgWarning("Duplicate style name. !! Please Change.");  
+                }
+            }
         }
     }
 }
