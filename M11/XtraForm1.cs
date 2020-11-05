@@ -205,6 +205,7 @@ namespace M11
 
         private void gvStyle_RowClick(object sender, RowClickEventArgs e)
         {
+            if (gvStyle.IsFilterRow(e.RowHandle)) return;
             lblStatus.Text = "* Edit Style";
             lblStatus.ForeColor = Color.Red;
 
