@@ -143,56 +143,65 @@ namespace M11
             }
             else
             {
-                if (FUNC.msgQuiz("Confirm save data ?") == true)
+                bool chkDup = chkDuplicateName();
+                if (chkDup == true)
                 {
-                    StringBuilder sbSQL = new StringBuilder();
+                    if (FUNC.msgQuiz("Confirm save data ?") == true)
+                    {
+                        StringBuilder sbSQL = new StringBuilder();
 
-                    string strCREATE = "0";
-                    if (txeCREATE.Text.Trim() != "")
-                    {
-                        strCREATE = txeCREATE.Text.Trim();
-                    }
-
-                    if (lblStatus.Text == "* Add Style")
-                    {
-                        sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
-                        sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
-                    }
-                    else if (lblStatus.Text == "* Edit Style")
-                    {
-                        sbSQL.Append("  UPDATE ProductStyle SET ");
-                        sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
-                        sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
-                    }
-
-                    //sbSQL.Append("IF NOT EXISTS(SELECT OIDSTYLE FROM ProductStyle WHERE OIDSTYLE = '" + txeID.Text.Trim() + "') ");
-                    //sbSQL.Append(" BEGIN ");
-                    //sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
-                    //sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
-                    //sbSQL.Append(" END ");
-                    //sbSQL.Append("ELSE ");
-                    //sbSQL.Append(" BEGIN ");
-                    //sbSQL.Append("  UPDATE ProductStyle SET ");
-                    //sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
-                    //sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
-                    //sbSQL.Append(" END ");
-                    //MessageBox.Show(sbSQL.ToString());
-                    if (sbSQL.Length > 0)
-                    {
-                        try
+                        string strCREATE = "0";
+                        if (txeCREATE.Text.Trim() != "")
                         {
-                            bool chkSAVE = new DBQuery(sbSQL).runSQL();
-                            if (chkSAVE == true)
-                            {
-                                bbiNew.PerformClick();
-                                FUNC.msgInfo("Save complete.");
-                            }
+                            strCREATE = txeCREATE.Text.Trim();
                         }
-                        catch (Exception)
-                        { }
+
+                        if (lblStatus.Text == "* Add Style")
+                        {
+                            sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
+                            sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                        }
+                        else if (lblStatus.Text == "* Edit Style")
+                        {
+                            sbSQL.Append("  UPDATE ProductStyle SET ");
+                            sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
+                            sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
+                        }
+
+                        //sbSQL.Append("IF NOT EXISTS(SELECT OIDSTYLE FROM ProductStyle WHERE OIDSTYLE = '" + txeID.Text.Trim() + "') ");
+                        //sbSQL.Append(" BEGIN ");
+                        //sbSQL.Append("  INSERT INTO ProductStyle(StyleName, OIDGCATEGORY, CreatedBy, CreatedDate) ");
+                        //sbSQL.Append("  VALUES(N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', '" + glueCategory.EditValue.ToString() + "', '" + strCREATE + "', GETDATE()) ");
+                        //sbSQL.Append(" END ");
+                        //sbSQL.Append("ELSE ");
+                        //sbSQL.Append(" BEGIN ");
+                        //sbSQL.Append("  UPDATE ProductStyle SET ");
+                        //sbSQL.Append("      StyleName = N'" + txeStyleNo.Text.Trim().Replace("'", "''") + "', OIDGCATEGORY = '" + glueCategory.EditValue.ToString() + "' ");
+                        //sbSQL.Append("  WHERE (OIDSTYLE = '" + txeID.Text.Trim() + "') ");
+                        //sbSQL.Append(" END ");
+                        //MessageBox.Show(sbSQL.ToString());
+                        if (sbSQL.Length > 0)
+                        {
+                            try
+                            {
+                                bool chkSAVE = new DBQuery(sbSQL).runSQL();
+                                if (chkSAVE == true)
+                                {
+                                    bbiNew.PerformClick();
+                                    FUNC.msgInfo("Save complete.");
+                                }
+                            }
+                            catch (Exception)
+                            { }
+                        }
                     }
                 }
-
+                else
+                {
+                    txeStyleNo.Text = "";
+                    txeStyleNo.Focus();
+                    FUNC.msgWarning("Duplicate style name. !! Please Change.");
+                }
             }
         }
 
